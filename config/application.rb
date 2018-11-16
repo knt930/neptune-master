@@ -16,6 +16,7 @@ module Neptune
       g.assets false
       g.test_framework false
       g.skip_routes true
+      g.template_engine false
     end
   end
 end
