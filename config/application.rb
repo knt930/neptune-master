@@ -15,9 +15,9 @@ module Neptune
       g.helper false
       g.assets false
       g.test_framework :rspec,
-                       fixtures: false,
                        view_specs: false,
                        helper_specs: false,
+                       routing_specs: false,
                        routing_specs: false
       g.skip_routes true
       g.template_engine false
