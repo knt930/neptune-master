@@ -44,7 +44,13 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (8.0.0)
+    autoprefixer-rails (9.3.1)
+      execjs
     bindex (0.5.0)
+    bootstrap (4.0.0.beta)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (~> 1.11.1)
+      sass (>= 3.4.19)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.14.4)
@@ -118,6 +124,7 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    popper_js (1.11.1)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -231,6 +238,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bootstrap
   byebug
   capybara (~> 2.13)
   cocoon
