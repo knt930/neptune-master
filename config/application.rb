@@ -20,7 +20,7 @@ module Neptune
                        routing_specs: false,
                        routing_specs: false
       g.skip_routes true
-      g.template_engine false
+      g.template_engine :slim
     end
   end
 end
