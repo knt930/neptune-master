@@ -1,0 +1,8 @@
+.nested-fields
+  .field
+    = f.label :body
+    = f.text_field :body
+  .field
+    = f.label :sort_order
+    = f.text_field :sort_order
+  = link_to_remove_association '手順を削除する', f

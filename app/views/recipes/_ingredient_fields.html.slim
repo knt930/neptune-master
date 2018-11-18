@@ -1,0 +1,11 @@
+.nested-fields
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :quantity_and_unit
+    = f.text_field :quantity_and_unit
+  .field
+    = f.label :sort_order
+    = f.text_field :sort_order
+  = link_to_remove_association '材料を削除する', f
