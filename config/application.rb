@@ -21,7 +21,6 @@ module Neptune
       g.test_framework :rspec,
                        view_specs: false,
                        helper_specs: false,
-                       routing_specs: false,
                        routing_specs: false
       g.skip_routes true
       g.template_engine :slim
