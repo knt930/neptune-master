@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    attributes:
+      recipe:
+        id: 'ID'
+        title: 'レシピのタイトル'
+        video_url: '動画URL'
+        thumbnail_url: 'サムネイルURL'
+        servings: '分量'
+        salt: '塩'
+        calorie: 'カロリー'
+        introduction: 'レシピの紹介文'
+        boosted: 'ブースト'
+        created_at: '作成日'
+      ingredient:
+        id: 'ID'
+        sort_order: '順番'
+        name: '材料名'
+        quantity_and_unit: '分量'
+      instruction:
+        sort_order: '順番'
+        body: '手順'
