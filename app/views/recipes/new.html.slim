@@ -1,0 +1,30 @@
+h1 レシピ投稿
+= form_with model: @recipe, url: recipes_path do |f|
+  .field
+    = f.label :thumbnail_url
+    = f.file_field :thumbnail_url
+  .field
+    = f.label :video_url
+    = f.file_field :video_url
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :introduction
+    = f.text_field :introduction
+  .field
+    = f.label :servings
+    = f.select :servings, [['1人前','1人前'], ['2人前', '2人前'],['3人前', '3人前'], ['4人前', '4人前'], ['5人前', '5人前'], ['6人前', '6人前']], prompt: true
+  br
+  #ingredients
+    = f.fields_for :ingredients do |field|
+      = render 'ingredient_fields', f: field
+    .links
+      = link_to_add_association '材料を追加する', f, :ingredients
+  br
+  #instructions
+    = f.fields_for :instructions do |field|
+      = render 'instruction_fields', f: field
+    .links
+      = link_to_add_association '手順を追加する', f, :instructions
+  = f.submit '投稿'
