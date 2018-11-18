@@ -1,11 +1,14 @@
 .nested-fields
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :quantity_and_unit
-    = f.text_field :quantity_and_unit
-  .field
-    = f.label :sort_order
-    = f.text_field :sort_order
-  = link_to_remove_association '材料を削除する', f
+  .form-group.row
+    .col-3
+      = f.label :name
+      = f.text_field :name, placeholder: '砂糖', class: 'form-control'
+    .col-3
+      = f.label :quantity_and_unit
+      = f.text_field :quantity_and_unit, placeholder: '大さじ1' , class: 'form-control'
+    .col-3
+      = f.label :sort_order
+      = f.number_field :sort_order, placeholder: 1, class: 'form-control'
+    .col-3
+      = link_to_remove_association f, class: 'btn delete-btn' do
+        i.fa.fa-trash-o.fa-3x
