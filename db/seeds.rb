@@ -1,5 +1,5 @@
 table_names = %w(
-  recipes ingredients instructions
+  recipes ingredients instructions foods quantities
 )
 table_names.each do |table_name|
   path = Rails.root.join("db/seeds", Rails.env, table_name + ".rb")
