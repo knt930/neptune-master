@@ -28,26 +28,8 @@ class Recipe < ApplicationRecord
   def calculate_total_calories
     calories = []
     ingredients.each do |ingredient|
-      if ingredient.quantity_and_unit.include?('g')
-        gram = ingredient.food.quantity.gram.first.gram.to_f * ingredient.quantity_and_unit.to_f
-      elsif ingredient.quantity_and_unit.include?('パック')
-        gram = ingredient.food.quantity.pack.first.gram.to_f * ingredient.quantity_and_unit.to_f
-      elsif ingredient.quantity_and_unit.include?('少々')
-        gram = ingredient.food.quantity.little.first.gram.to_f
-      elsif ingredient.quantity_and_unit.include?('大さじ')
-        if ingredient.quantity_and_unit.include?('1/2')
-          gram = ingredient.food.quantity.oosaji.first.gram.to_f * 0.5
-        else
-          gram = ingredient.food.quantity.oosaji.first.gram.to_f * ingredient.quantity_and_unit.gsub(/[^\d]/, "").to_f
-        end
-      elsif ingredient.quantity_and_unit.include?('小さじ')
-        if ingredient.quantity_and_unit.include?('1/2')
-          gram = ingredient.food.quantity.kosaji.first.gram.to_f * 0.5
-        else
-          gram = ingredient.food.quantity.kosaji.first.gram * ingredient.quantity_and_unit.gsub(/[^\d]/, "").to_f
-        end
-      end
-      calorie = ingredient.food.calories_per_100.to_f * (gram / 100)
+      gram = Ingredient.convert_gram(ingredient)
+      calorie = ingredient.food.return_calories(gram)
       calories << calorie
     end
     total_calories = calories.sum
@@ -57,26 +39,8 @@ class Recipe < ApplicationRecord
   def calculate_total_salts
     salts = []
     ingredients.each do |ingredient|
-      if ingredient.quantity_and_unit.include?('g')
-        gram = ingredient.food.quantity.gram.first.gram.to_f * ingredient.quantity_and_unit.to_f
-      elsif ingredient.quantity_and_unit.include?('パック')
-        gram = ingredient.food.quantity.pack.first.gram.to_f * ingredient.quantity_and_unit.to_f
-      elsif ingredient.quantity_and_unit.include?('少々')
-        gram = ingredient.food.quantity.little.first.gram.to_f
-      elsif ingredient.quantity_and_unit.include?('大さじ')
-        if ingredient.quantity_and_unit.include?('1/2')
-          gram = ingredient.food.quantity.oosaji.first.gram.to_f * 0.5
-        else
-          gram = ingredient.food.quantity.oosaji.first.gram.to_f * ingredient.quantity_and_unit.gsub(/[^\d]/, "").to_f
-        end
-      elsif ingredient.quantity_and_unit.include?('小さじ')
-        if ingredient.quantity_and_unit.include?('1/2')
-          gram = ingredient.food.quantity.kosaji.first.gram.to_f * 0.5
-        else
-          gram = ingredient.food.quantity.kosaji.first.gram * ingredient.quantity_and_unit.gsub(/[^\d]/, "").to_f
-        end
-      end
-      salt = ingredient.food.salts_per_100.to_f * (gram / 100)
+      gram = Ingredient.convert_gram(ingredient)
+      salt = ingredient.food.return_salts(gram)
       salts << salt
     end
     total_salts = salts.sum
