@@ -1,0 +1,42 @@
+.container
+  h2.post-recipe-title レシピ投稿
+  = form_with model: @recipe, url: recipes_path do |f|
+    .row.form-group
+      .field1.col-5
+        = f.label :thumbnail_url
+        br
+        = f.file_field :thumbnail_url
+      .field2.col-7
+        = f.label :title
+        br
+        = f.text_area :title, size: '60x3', class: 'form-control'
+      .field3.col-5
+        = f.label :video_url
+        br
+        = f.file_field :video_url
+      .field4.col-7
+        = f.label :introduction
+        br
+        = f.text_area :introduction, size: '60x5', class: 'form-control'
+      .field5.col-12
+        h3
+          | 分量
+        = f.select :servings, [['1人前','1人前'], ['2人前', '2人前'],['3人前', '3人前'], ['4人前', '4人前'], ['5人前', '5人前'], ['6人前', '6人前']], prompt: true
+      .col-6
+        h3
+          | 材料(必須)
+        #ingredients
+          = f.fields_for :ingredients do |field|
+            = render 'ingredient_fields', f: field
+          .links
+            = link_to_add_association '材料を追加する', f, :ingredients
+      .col-6
+        h3
+          | 手順(必須)
+        #instructions
+          = f.fields_for :instructions do |field|
+            = render 'instruction_fields', f: field
+          .links
+            = link_to_add_association '手順を追加する', f, :instructions
+    .submit-recipe
+      = f.submit 'レシピを投稿する', id: 'submit_btn'
