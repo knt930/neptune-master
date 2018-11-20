@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829094748) do
+ActiveRecord::Schema.define(version: 20181119234531) do
+
+  create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "ingredient_id"
+    t.string "calories_per_100"
+    t.string "salts_per_100"
+    t.index ["ingredient_id"], name: "index_foods_on_ingredient_id"
+  end
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "recipe_id", null: false
