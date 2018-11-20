@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20181119234531) do
     t.index ["recipe_id"], name: "index_instructions_on_recipe_id"
   end
 
+  create_table "quantities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "quantity"
+    t.string "gram"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_quantities_on_food_id"
+  end
+
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title", null: false
     t.string "video_url", null: false
